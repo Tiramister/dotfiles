@@ -23,7 +23,7 @@ alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 
 ### Oh My Zsh ###
 # theme
-ZSH_THEME="crcandy"
+ZSH_THEME="intheloop"
 # only checks if there are updates available and shows a reminder
 zstyle ':omz:update' mode reminder
 # disable marking untracked files under VCS as dirty
