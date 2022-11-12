@@ -1,4 +1,4 @@
-FILES=(".zshrc" ".vimrc")
+FILES=(".zshrc" ".vimrc" ".gitconfig")
 
 for filename in ${FILES[@]}; do
   dest="${HOME}/${filename}"
@@ -8,4 +8,3 @@ for filename in ${FILES[@]}; do
   fi
   ln -sf "$(pwd)/${filename}" "${dest}"
 done
-
