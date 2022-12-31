@@ -7,17 +7,6 @@ set nostartofline
 " 下から3行目の時点でスクロールをする
 set scrolloff=3
 
-" バックアップファイル
-set backup
-set backupdir=~/.vim/backups/
-" スワップファイル
-set swapfile
-set updatetime=60000
-set directory=~/.vim/swaps/
-" undo ファイル
-set undofile
-set undodir=~/.vim/undo/
-
 " 行番号を表示
 set number
 " カーソル行に線を表示
@@ -54,7 +43,4 @@ set expandtab
 set tabstop=2
 " シフト幅
 set shiftwidth=2
-
-" キーマップ
-inoremap jj <esc>
 
