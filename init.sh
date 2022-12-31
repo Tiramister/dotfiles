@@ -1,10 +1,27 @@
-FILES=(".zshrc" ".vimrc" ".gitconfig")
+#!/bin/zsh
 
-for filename in ${FILES[@]}; do
-  dest="${HOME}/${filename}"
-  if [ -f "${dest}" ]; then
-    mv "${dest}" "${dest}.org"
-    echo "${dest} >> ${dest}.org" >&2
+typeset -A src_dst_file_map=(
+  '.zshrc' '.zshrc'
+  'vim/.vimrc' '.vimrc'
+  'vim/config' '.vim/config'
+)
+
+for src dst in "${(@kv)src_dst_file_map[@]}"; do
+  src="$(pwd)/${src}"
+  dst="${HOME}/${dst}"
+
+  if [ -e "${dst}" ]; then
+    mv "${dst}" "${dst}.org"
+    echo "${dst} is renamed to ${dst}.org" >&2
   fi
-  ln -sf "$(pwd)/${filename}" "${dest}"
+
+  if [ -d "${dst}" ]; then
+    mkdir -p "${dst}"
+  else
+    mkdir -p "$(dirname ${dst})"
+  fi
+
+  ln -sf "${src}" "${dst}"
+  echo "${dst} -> ${src}" >&2
 done
+
