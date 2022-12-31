@@ -7,3 +7,4 @@ export BROWSER="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export PROMPT="
 %F{green}%n%f @ %F{green}%~%f
 %F{red}>>>%f "
+
