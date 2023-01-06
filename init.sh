@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+# create symlinks from HOME to this repo
 typeset -A src_dst_file_map=(
   '.zshrc' '.zshrc'
   'vim/.vimrc' '.vimrc'
@@ -24,4 +25,7 @@ for src dst in "${(@kv)src_dst_file_map[@]}"; do
   ln -sf "${src}" "${dst}"
   echo "${dst} -> ${src}" >&2
 done
+
+# install vim plugins
+vim +PlugInstall +PlugClean +qa
 
