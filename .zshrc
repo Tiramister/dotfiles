@@ -1,13 +1,14 @@
-# default software
-export EDITOR=vim
-export VISUAL="$EDITOR"
-export BROWSER="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-
-# prompt
+### Fundamental
 export PROMPT="
 %F{green}%m:%n%f @ %F{green}%~%f
 %F{red}>>>%f "
 
+### Aliases
+alias ls='ls -AFG'
+alias cp='cp -i'
+alias mv='mv -i'
+
+### Languages
 # nvm
 if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
