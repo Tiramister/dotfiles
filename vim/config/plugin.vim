@@ -8,7 +8,6 @@ endif
 call plug#begin()
   runtime config/plugins/lightline.vim
   runtime config/plugins/coc.vim
-  Plug 'ervandew/supertab'
   Plug 'vim-jp/vimdoc-ja'
 call plug#end()
 
