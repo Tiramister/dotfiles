@@ -5,6 +5,7 @@ src_dst_file_map=(
   '.zshrc' '.zshrc'
   'vim/.vimrc' '.vimrc'
   'vim/config' '.vim/config'
+  'vim/coc-settings.json' '.vim/coc-settings.json'
 )
 
 for i in $(seq 1 2 ${#src_dst_file_map[@]}); do
@@ -32,5 +33,5 @@ for i in $(seq 1 2 ${#src_dst_file_map[@]}); do
 done
 
 # install vim plugins
-vim +PlugInstall +PlugClean! +CocInstall +qa!
+vim +PlugInstall +PlugClean! +qa!
 
