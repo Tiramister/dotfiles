@@ -1,19 +1,24 @@
-#!/bin/zsh
+#!/bin/sh
 
 # create symlinks from HOME to this repo
-typeset -A src_dst_file_map=(
+src_dst_file_map=(
   '.zshrc' '.zshrc'
   'vim/.vimrc' '.vimrc'
   'vim/config' '.vim/config'
 )
 
-for src dst in "${(@kv)src_dst_file_map[@]}"; do
-  src="$(pwd)/${src}"
-  dst="${HOME}/${dst}"
+for i in $(seq 1 2 ${#src_dst_file_map[@]}); do
+  src="$(pwd)/${src_dst_file_map[i - 1]}"
+  dst="${HOME}/${src_dst_file_map[i]}"
+
+  if [ ! -e "${src}" ]; then
+    echo "[ERROR] No such file: ${src}" >&2
+    exit 1
+  fi
 
   if [ -e "${dst}" ]; then
     mv "${dst}" "${dst}.org"
-    echo "${dst} is renamed to ${dst}.org" >&2
+    echo "[INFO] ${dst} is renamed to ${dst}.org" >&2
   fi
 
   if [ -d "${dst}" ]; then
@@ -23,9 +28,9 @@ for src dst in "${(@kv)src_dst_file_map[@]}"; do
   fi
 
   ln -sf "${src}" "${dst}"
-  echo "${dst} -> ${src}" >&2
+  echo "[INFO] A symlink is created: ${dst} -> ${src}" >&2
 done
 
 # install vim plugins
-vim +PlugInstall +PlugClean +qa
+vim +PlugInstall +PlugClean! +CocInstall +qa!
 
