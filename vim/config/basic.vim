@@ -41,4 +41,6 @@ set expandtab
 set tabstop=2
 " シフト幅
 set shiftwidth=2
+" ファイルタイプ別インデント
+filetype plugin indent on
 
