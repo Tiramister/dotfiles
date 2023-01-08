@@ -32,8 +32,6 @@ set smartcase
 set incsearch
 " 一番下から一番上の検索対象へ移動
 set wrapscan
-" 検索対象を強調する
-set hlsearch
 
 " 改行時に良い感じにインデントをする
 set smartindent
