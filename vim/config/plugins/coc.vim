@@ -24,5 +24,5 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-sh', 'coc-git', 'coc-rust-analyzer']
 

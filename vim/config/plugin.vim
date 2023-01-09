@@ -6,7 +6,7 @@ endif
 
 " introduce plugins
 call plug#begin()
-  runtime config/plugins/lightline.vim
+  runtime config/plugins/theme.vim
   runtime config/plugins/coc.vim
   runtime config/plugins/rust.vim
   Plug 'vim-jp/vimdoc-ja'
