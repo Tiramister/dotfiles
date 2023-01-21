@@ -29,5 +29,5 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_global_extensions = ['coc-sh', 'coc-git', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-sh', 'coc-git']
 
