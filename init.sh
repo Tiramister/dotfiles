@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # create symlinks from HOME to this repo
 src_dst_file_map=(
@@ -9,8 +9,8 @@ src_dst_file_map=(
 )
 
 for i in $(seq 1 2 ${#src_dst_file_map[@]}); do
-  src="$(pwd)/${src_dst_file_map[i - 1]}"
-  dst="${HOME}/${src_dst_file_map[i]}"
+  src="$(pwd)/${src_dst_file_map[i]}"
+  dst="${HOME}/${src_dst_file_map[i + 1]}"
 
   if [ ! -e "${src}" ]; then
     echo "[ERROR] No such file: ${src}" >&2
@@ -28,7 +28,7 @@ for i in $(seq 1 2 ${#src_dst_file_map[@]}); do
     mkdir -p "$(dirname ${dst})"
   fi
 
-  ln -sf "${src}" "${dst}"
+  ln -snf "${src}" "${dst}"
   echo "[INFO] A symlink is created: ${dst} -> ${src}" >&2
 done
 

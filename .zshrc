@@ -2,13 +2,20 @@
 export PROMPT="
 %F{green}%m:%n%f @ %F{green}%~%f
 %F{red}>>>%f "
+# .lesshst を作らない
+export LESSHISTFILE=-
 
 ### Aliases
-alias ls='ls -AFG'
+alias ls='ls -AF --color=auto'
 alias cp='cp -i'
 alias mv='mv -i'
 
 ### Languages
+# rust
+if [ -e "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
+
 # nvm
 if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
