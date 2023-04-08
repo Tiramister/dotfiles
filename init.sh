@@ -1,11 +1,10 @@
-#!/bin/sh
+#!/bin/zsh
 
 # create symlinks from HOME to this repo
 src_dst_file_map=(
   '.zshrc:.zshrc'
   'vim/.vimrc:.vimrc'
   'vim/config:.vim/config'
-  'vim/coc-settings.json:.vim/coc-settings.json'
 )
 
 for line in ${src_dst_file_map[@]}; do
