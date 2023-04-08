@@ -2,8 +2,9 @@
 export PROMPT="
 %F{green}%m:%n%f @ %F{green}%~%f
 %F{red}>>>%f "
-# .lesshst を作らない
+# less
 export LESSHISTFILE=-
+export LESSCHARSET=utf-8
 
 ### Aliases
 alias ls='ls -AF --color=auto'
