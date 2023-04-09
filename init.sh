@@ -3,8 +3,7 @@
 # create symlinks from HOME to this repo
 src_dst_file_map=(
   '.zshrc:.zshrc'
-  'vim/.vimrc:.vimrc'
-  'vim/config:.vim/config'
+  '.config:.config'
 )
 
 for line in ${src_dst_file_map[@]}; do
@@ -13,7 +12,7 @@ for line in ${src_dst_file_map[@]}; do
   dst="${HOME}/${dst_file}"
 
   if [ ! -e "${src}" ]; then
-    echo "[ERROR] No such file: ${src}" >&2
+    echo "[ERROR] No such file or directory: ${src}" >&2
     exit 1
   fi
 

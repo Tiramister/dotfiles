@@ -45,4 +45,8 @@ Temporary Items
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-
+### Custom
+.config/lazygit/state.yml
+.config/nvim/plugged/
+.config/nvim/site/
+.config/solarized/

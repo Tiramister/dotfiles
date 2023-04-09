@@ -1,0 +1,10 @@
+gui:
+  theme:
+    defaultFgColor:
+      - black
+keybinding:
+  universal:
+    prevItem-alt: 'k'
+    nextItem-alt: 'j'
+    prevBlock-alt: 'h'
+    nextBlock-alt: 'l'

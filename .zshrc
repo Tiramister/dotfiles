@@ -1,10 +1,16 @@
 ### Fundamental
+# Prompt
 export PROMPT="
 %F{green}%m:%n%f @ %F{green}%~%f
 %F{red}>>>%f "
+
 # less
 export LESSHISTFILE=-
 export LESSCHARSET=utf-8
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.config"
 
 ### Aliases
 alias ls='ls -AF --color=auto'
