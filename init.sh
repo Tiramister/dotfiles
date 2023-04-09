@@ -27,6 +27,6 @@ for line in ${src_dst_file_map[@]}; do
   echo "[INFO] A symlink is created: $dst -> $src" >&2
 done
 
-# install vim plugins
-vim +PlugInstall +PlugClean! +qa!
+# install neovim plugins
+nvim +PlugInstall +PlugClean! +qa!
 
