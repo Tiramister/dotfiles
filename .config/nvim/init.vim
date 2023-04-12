@@ -64,23 +64,65 @@ set undofile
 """ キーマップ """
 " ファイルのディレクトリを展開
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-runtime config/plugin.vim
+
 
 """ プラグイン """
+" テーマ
+set background=light
+colorscheme solarized
+highlight DiagnosticHint ctermfg=gray
+set noshowmode
+let g:lightline = { 'colorscheme': 'solarized' }
+
 " vim-plug をインストール
 if empty(glob('~/.config/nvim/site/autoload/plug.vim'))
   call system('curl -fLo ~/.config/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 endif
 
 call plug#begin()
-  Plug 'altercation/vim-colors-solarized', {'do': 'mkdir -p ~/.config/nvim/colors && cp colors/* ~/.config/nvim/colors/'}
+  Plug 'shaunsingh/solarized.nvim'
   Plug 'itchyny/lightline.vim'
   Plug 'vim-jp/vimdoc-ja'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+  Plug 'williamboman/mason-lspconfig.nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
-" テーマ
-set background=light
-colorscheme solarized
-set noshowmode
-let g:lightline = { 'colorscheme': 'solarized' }
+" LSP
+lua << EOF
+  require('mason').setup()
+  require('mason-lspconfig').setup()
+
+  local cmp = require('cmp')
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+      ['<Tab>'] = cmp.mapping.select_next_item(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+    })
+  })
+
+  local lspconfig = require('lspconfig')
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  lspconfig.rust_analyzer.setup { capabilities = capabilities }
+EOF
+
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
+
+autocmd BufWritePre * lua vim.lsp.buf.format()
+
