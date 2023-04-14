@@ -1,0 +1,11 @@
+[user]
+	name = Tiramister
+	email = nh111424@gmail.com
+[core]
+	editor = nvim
+[pull]
+	rebase = true
+[push]
+	default = simple
+[init]
+	defaultBranch = main
