@@ -66,21 +66,27 @@ set undofile
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 
-""" プラグイン """
-" テーマ
+""" テーマ """
+let colors_dir = $XDG_DATA_HOME . '/nvim/site/colors/'
+call system('mkdir -p ' . colors_dir)
+
+let solarized_path = colors_dir . 'solarized.vim'
+if empty(glob(solarized_path))
+  call system('curl -fLo ' . solarized_path . ' --create-dirs https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim')
+endif
 set background=light
 colorscheme solarized
 highlight DiagnosticHint ctermfg=gray
-set noshowmode
-let g:lightline = { 'colorscheme': 'solarized' }
 
-" vim-plug をインストール
-if empty(glob('~/.config/nvim/site/autoload/plug.vim'))
-  call system('curl -fLo ~/.config/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+
+""" プラグイン """
+" vim-plug
+let vimplug_path = $XDG_DATA_HOME . '/nvim/site/autoload/plug.vim'
+if empty(glob(vimplug_path))
+  call system('curl -fLo ' . vimplug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 endif
 
 call plug#begin()
-  Plug 'shaunsingh/solarized.nvim'
   Plug 'itchyny/lightline.vim'
   Plug 'vim-jp/vimdoc-ja'
   Plug 'jiangmiao/auto-pairs'
@@ -125,4 +131,8 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
 
 autocmd BufWritePre * lua vim.lsp.buf.format()
+
+" lightline
+set noshowmode
+let g:lightline = { 'colorscheme': 'solarized' }
 
