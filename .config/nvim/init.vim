@@ -45,7 +45,7 @@ set shiftwidth=2
 " ファイルタイプ別インデント
 filetype plugin indent on
 
-let vimdir = $HOME . "/.vim/backup/"
+let vimdir = $XDG_STATE_HOME . "/nvim/backup/"
 " バックアップファイル
 let &backupdir = vimdir . "backups/"
 call mkdir(&backupdir, "p")
