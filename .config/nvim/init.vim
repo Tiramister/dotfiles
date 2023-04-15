@@ -90,7 +90,6 @@ call plug#begin()
   Plug 'itchyny/lightline.vim'
   Plug 'vim-jp/vimdoc-ja'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
   Plug 'williamboman/mason-lspconfig.nvim'
   Plug 'neovim/nvim-lspconfig'
@@ -99,10 +98,19 @@ call plug#begin()
   Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
+" lightline
+set noshowmode
+let g:lightline = { 'colorscheme': 'solarized' }
+
 " LSP
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
+
+autocmd BufWritePre * lua vim.lsp.buf.format()
+
 lua << EOF
   require('mason').setup()
-  require('mason-lspconfig').setup()
 
   local cmp = require('cmp')
   cmp.setup({
@@ -123,16 +131,12 @@ lua << EOF
 
   local lspconfig = require('lspconfig')
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  lspconfig.rust_analyzer.setup { capabilities = capabilities }
+  require('mason-lspconfig').setup_handlers {
+    function(server_name)
+      lspconfig[server_name].setup {
+        capabilities = capabilities 
+      }
+    end,
+  }
 EOF
-
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
-
-autocmd BufWritePre * lua vim.lsp.buf.format()
-
-" lightline
-set noshowmode
-let g:lightline = { 'colorscheme': 'solarized' }
 
