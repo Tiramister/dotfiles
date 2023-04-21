@@ -46,7 +46,7 @@ Temporary Items
 .nfs*
 
 ### Custom
+.config/karabiner/
+!.config/karabiner/karabiner.json
 .config/lazygit/state.yml
-.config/nvim/plugged/
-.config/nvim/site/
-.config/solarized/
+
