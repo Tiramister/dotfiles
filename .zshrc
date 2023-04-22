@@ -25,9 +25,8 @@ alias mv='mv -i'
 
 ### Languages
 # rust
-if [ -e "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
-fi
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+[ -e "$CARGO_HOME/env" ] && \. "$CARGO_HOME/env"
 
 # nvm
 export NVM_DIR="$XDG_DATA_HOME/nvm"
