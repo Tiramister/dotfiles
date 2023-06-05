@@ -83,6 +83,7 @@ augroup custom_highlight
   au ColorScheme * highlight DiagnosticHint ctermfg=gray
 augroup END
 
+
 """ プラグイン """
 " vim-plug
 let vimplug_path = $XDG_DATA_HOME . '/nvim/site/autoload/plug.vim'
@@ -100,6 +101,7 @@ call plug#begin()
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/vim-vsnip'
+  Plug 'github/copilot.vim'
 call plug#end()
 
 " lightline
@@ -124,8 +126,8 @@ lua << EOF
       end,
     },
     mapping = cmp.mapping.preset.insert({
-      ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-      ['<Tab>'] = cmp.mapping.select_next_item(),
+      ['<C-K>'] = cmp.mapping.select_prev_item(),
+      ['<C-J>'] = cmp.mapping.select_next_item(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
