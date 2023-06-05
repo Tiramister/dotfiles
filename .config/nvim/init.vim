@@ -76,8 +76,12 @@ if empty(glob(solarized_path))
 endif
 set background=light
 colorscheme solarized
-highlight DiagnosticHint ctermfg=gray
 
+" colorscheme に上書きされないようにする
+augroup custom_highlight
+  autocmd!
+  au ColorScheme * highlight DiagnosticHint ctermfg=gray
+augroup END
 
 """ プラグイン """
 " vim-plug
