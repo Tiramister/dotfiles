@@ -24,6 +24,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 ### Languages
+# homebrew
+export PATH="/usr/local/sbin:$PATH"
+
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 [ -e "$CARGO_HOME/env" ] && \. "$CARGO_HOME/env"
@@ -35,4 +38,8 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ -z $TMUX ]; then
+  tmux attach -t default || tmux new -s default
+fi
 
