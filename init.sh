@@ -4,6 +4,7 @@
 src_dst_file_map=(
   '.zshrc:.zshrc'
   '.config:.config'
+  '.Brewfile':'.Brewfile'
 )
 
 for line in ${src_dst_file_map[@]}; do
@@ -26,7 +27,4 @@ for line in ${src_dst_file_map[@]}; do
   ln -snf $src $dst
   echo "[INFO] A symlink is created: $dst -> $src" >&2
 done
-
-# install neovim plugins
-nvim +PlugInstall +PlugClean! +qa!
 
