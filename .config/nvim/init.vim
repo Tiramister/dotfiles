@@ -67,6 +67,11 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 
 """ テーマ """
+" colorscheme に上書きされないようにする
+autocmd ColorScheme * highlight DiagnosticHint ctermfg=gray
+                  \ | highlight NormalFloat ctermbg=white
+                  \ | highlight FloatBorder ctermbg=white
+
 let colors_dir = $XDG_DATA_HOME . '/nvim/site/colors/'
 call system('mkdir -p ' . colors_dir)
 
@@ -76,12 +81,6 @@ if empty(glob(solarized_path))
 endif
 set background=light
 colorscheme solarized
-
-" colorscheme に上書きされないようにする
-augroup custom_highlight
-  autocmd!
-  au ColorScheme * highlight DiagnosticHint ctermfg=gray
-augroup END
 
 
 """ プラグイン """
@@ -132,7 +131,10 @@ lua << EOF
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-    })
+    }),
+    window = {
+      completion = cmp.config.window.bordered(),
+    }
   })
 
   local lspconfig = require('lspconfig')
@@ -144,5 +146,10 @@ lua << EOF
       }
     end,
   }
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+      border = 'single'
+    }
+  )
 EOF
 
