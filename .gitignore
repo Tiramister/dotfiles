@@ -49,4 +49,8 @@ Temporary Items
 .config/karabiner/
 !.config/karabiner/karabiner.json
 .config/lazygit/state.yml
+.config/configstore/
+.config/jgit/
+.config/tmux/plugins/
+.config/github-copilot/
 
