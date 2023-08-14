@@ -1,7 +1,3 @@
-gui:
-  theme:
-    defaultFgColor:
-      - black
 keybinding:
   universal:
     prevItem-alt: 'k'

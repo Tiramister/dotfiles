@@ -66,23 +66,6 @@ set undofile
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 
-""" テーマ """
-" colorscheme に上書きされないようにする
-autocmd ColorScheme * highlight DiagnosticHint ctermfg=gray
-                  \ | highlight NormalFloat ctermbg=white
-                  \ | highlight FloatBorder ctermbg=white
-
-let colors_dir = $XDG_DATA_HOME . '/nvim/site/colors/'
-call system('mkdir -p ' . colors_dir)
-
-let solarized_path = colors_dir . 'solarized.vim'
-if empty(glob(solarized_path))
-  call system('curl -fLo ' . solarized_path . ' --create-dirs https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim')
-endif
-set background=light
-colorscheme solarized
-
-
 """ プラグイン """
 " vim-plug
 let vimplug_path = $XDG_DATA_HOME . '/nvim/site/autoload/plug.vim'
@@ -105,7 +88,6 @@ call plug#end()
 
 " lightline
 set noshowmode
-let g:lightline = { 'colorscheme': 'solarized' }
 
 " LSP
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
