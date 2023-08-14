@@ -64,6 +64,8 @@ set undofile
 """ キーマップ """
 " ファイルのディレクトリを展開
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" コマンドラインウィンドウ邪魔
+nnoremap q: <nop>
 
 
 """ プラグイン """
