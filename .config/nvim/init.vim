@@ -60,6 +60,23 @@ let &undodir = vimdir . "undo/"
 call mkdir(&undodir, "p")
 set undofile
 
+" WSL のクリップボード
+if !empty($IS_WSL)
+  " https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+  let g:clipboard = {
+  \   'name': 'WslClipboard',
+  \   'copy': {
+  \      '+': 'clip.exe',
+  \      '*': 'clip.exe',
+  \    },
+  \   'paste': {
+  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \   },
+  \   'cache_enabled': 0,
+  \ }
+endif
+
 
 """ キーマップ """
 " ファイルのディレクトリを展開
