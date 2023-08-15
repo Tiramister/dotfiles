@@ -4,3 +4,9 @@ keybinding:
     nextItem-alt: 'j'
     prevBlock-alt: 'h'
     nextBlock-alt: 'l'
+customCommands:
+  - key: '<c-d>'
+    context: 'commits'
+    command: 'git difftool {{.SelectedLocalCommit.Sha}}~..{{.SelectedLocalCommit.Sha}}'
+    subprocess: true
+

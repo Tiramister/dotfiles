@@ -9,3 +9,5 @@
 	default = simple
 [init]
 	defaultBranch = main
+[diff]
+	tool = nvimdiff
