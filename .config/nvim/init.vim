@@ -96,6 +96,7 @@ call plug#begin()
   Plug 'itchyny/lightline.vim'
   Plug 'vim-jp/vimdoc-ja'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'lambdalisue/fern.vim'
   Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
   Plug 'williamboman/mason-lspconfig.nvim'
   Plug 'neovim/nvim-lspconfig'
