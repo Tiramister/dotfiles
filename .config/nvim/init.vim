@@ -78,11 +78,17 @@ if !empty($IS_WSL)
 endif
 
 
+
 """ キーマップ """
 " ファイルのディレクトリを展開
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " コマンドラインウィンドウ邪魔
 nnoremap q: <nop>
+
+
+""" カラー """
+highlight NormalFloat ctermbg=None
+highlight FloatBorder ctermbg=None
 
 
 """ プラグイン """
@@ -104,6 +110,8 @@ call plug#begin()
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'github/copilot.vim'
+  Plug 'folke/trouble.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
 " lightline
