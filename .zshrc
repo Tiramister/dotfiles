@@ -36,6 +36,7 @@ export PATH="/usr/local/sbin:$PATH"
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 [ -e "$CARGO_HOME/env" ] && \. "$CARGO_HOME/env"
+export RUST_BACKTRACE=1
 
 # nvm
 export NVM_DIR="$XDG_DATA_HOME/nvm"
