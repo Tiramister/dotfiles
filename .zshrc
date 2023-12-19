@@ -19,7 +19,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # history
-setopt inc_append_history
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
