@@ -1,3 +1,5 @@
+gui:
+  language: 'en'
 keybinding:
   universal:
     prevItem-alt: 'k'
