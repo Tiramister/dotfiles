@@ -1,8 +1,9 @@
 [user]
 	name = Tiramister
-	email = nh111424@gmail.com
+	email = contact@tiramister.net
 [core]
 	editor = nvim
+	autocrlf = input
 [pull]
 	rebase = true
 [push]
@@ -11,3 +12,6 @@
 	defaultBranch = main
 [diff]
 	tool = nvimdiff
+[rebase]
+	autosquash = true
+
