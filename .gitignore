@@ -46,13 +46,10 @@ Temporary Items
 .nfs*
 
 ### Custom
-.config/karabiner/
-!.config/karabiner/karabiner.json
-.config/lazygit/state.yml
-.config/configstore/
-.config/jgit/
-.config/tmux/plugins/
-.config/github-copilot/
-# AstroNvim
-.config/nvim/
+.config/**/*
+!.config/astronvim
+!.config/git
+!.config/karabiner
+!.config/lazygit
+!.config/wezterm
 
