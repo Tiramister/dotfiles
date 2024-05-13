@@ -49,7 +49,6 @@ Temporary Items
 .config/**/*
 !.config/astronvim
 !.config/git
-!.config/karabiner
 !.config/lazygit
 !.config/wezterm
 
