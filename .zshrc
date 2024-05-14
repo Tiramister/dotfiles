@@ -56,5 +56,8 @@ alias mv='mv -i'
 [ -e /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ -e /usr/local/bin/brew ] && eval "$(/usr/local/bin/brew shellenv)"
 
+# mise
+[ -e /usr/local/bin/mise ] && eval "$(/usr/local/bin/mise activate zsh)"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
