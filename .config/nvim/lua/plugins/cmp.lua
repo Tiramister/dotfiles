@@ -1,5 +1,5 @@
 return {
-  plugins = {
+  {
     "AstroNvim/astrocommunity",
     { import = "astrocommunity.completion.copilot-lua-cmp" },
     {
@@ -9,22 +9,10 @@ return {
         opts.mapping['<C-K>'] = cmp.mapping.select_prev_item()
         opts.mapping['<C-J>'] = cmp.mapping.select_next_item()
         opts.mapping['<CR>'] = cmp.mapping.confirm({ select = true })
+        opts.mapping['<C-Space>'] = nil
         return opts
       end,
     }
-  },
-  mappings = {
-    c = {
-      ["%%"] = {
-        function()
-          if vim.fn.getcmdtype() == ":" then
-            return vim.fn.expand("%:h") .. "/"
-          else
-            return "%%"
-          end
-        end,
-        expr = true
-      }
-    }
   }
 }
+

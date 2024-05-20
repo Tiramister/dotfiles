@@ -47,7 +47,7 @@ Temporary Items
 
 ### Custom
 .config/**/*
-!.config/astronvim
+!.config/nvim
 !.config/git
 !.config/lazygit
 !.config/wezterm
